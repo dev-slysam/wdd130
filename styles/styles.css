@@ -1,5 +1,5 @@
 main {
-    max-width: 840;
+    max-width: 840px;
 }
 
 aside {
@@ -13,7 +13,7 @@ aside {
 }
 
 aside img {
-    width: 200px auto;
+    width: 200px;
     height: auto;
 }
 
