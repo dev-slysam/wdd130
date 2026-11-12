@@ -4,6 +4,29 @@
     box-sizing: border-box;
 }
 
+header nav {
+    padding: 0;
+    background-color: #eee;
+
+}
+
+header nav a {
+    color: blue;
+    padding: 0;
+    display: block;
+}
+
+main h1 {
+    color: black;
+}
+
+main img {
+    border: 1px;
+    padding: 0;
+    box-shadow: 0 0 30px #333;
+
+}
+
 main {
     max-width: 840px;
 }
