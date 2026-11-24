@@ -51,7 +51,7 @@ header img {
     height: auto;
 }
 
-nav ul {
+header nav ul {
     display: flex;
     list-style: none;
     margin-left: 24px;
@@ -62,11 +62,11 @@ nav ul {
     overflow: hidden;
 }
 
-nav li + li {
+header nav li + li {
     border-left: 1px solid var(--line);
 }
 
-nav a {
+header nav a {
     display: block;
     padding: 8px 22px;
     color: var(--accent1-color);
@@ -74,8 +74,8 @@ nav a {
     text-align: center;
 }
 
-nav a:hover,
-nav a:focus-visible {
+header nav a:hover,
+header nav a:focus-visible {
     color: var(--primary-color);
     background-color: var(--secondary-color);
 }
@@ -91,6 +91,8 @@ h2 {
     text-align: center;
     font-size: 1.6rem;
     margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 4px solid var(--accent2-color);
 }
 
 section p {
@@ -130,9 +132,8 @@ section p {
     bottom: 30px;
     left: 20px;
     right: 20px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
+    display: flow-root;
+    /* contains the floated image */
     padding: 16px;
     color: var(--accent1-color);
     background-color: #fff;
@@ -140,17 +141,16 @@ section p {
 }
 
 .hero article p {
-    flex: 1;
     padding: 0;
     font-size: 0.9rem;
 }
 
 .hero article img {
-    order: 2;
+    float: right;
     /* small image sits on the right of the text */
     width: 125px;
     height: auto;
-    flex-shrink: 0;
+    margin-left: 16px;
 }
 
 /* ---------- Shared grey panels (History, Adventure Awaits You) ---------- */
@@ -250,11 +250,11 @@ footer p {
         flex-direction: column;
     }
 
-    nav ul {
+    header nav ul {
         margin-left: 0;
     }
 
-    nav a {
+    header nav a {
         padding: 8px 12px;
     }
 
@@ -270,7 +270,6 @@ footer p {
     .hero article {
         position: static;
         margin: 12px;
-        flex-direction: column;
     }
 
     .history {
