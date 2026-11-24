@@ -3,6 +3,11 @@
     --secondary-color: #f4a261;
     --accent1-color: #264653;
     --accent2-color: #e9c46a;
+    --lavender: #dac8ff;
+    /* header and footer background from the wireframe */
+    --panel: #f4f4f4;
+    /* light grey section panels */
+    --line: #333;
     --heading-font: "Fira Sans Extra Condensed", "Arial Narrow", sans-serif;
     --body-font: "Roboto", Arial, Helvetica, sans-serif;
 }
@@ -27,56 +32,90 @@ footer {
     padding: 0 12px;
 }
 
-/* Header */
+/* ---------- Header: logo left, nav bar right ---------- */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    margin-top: 10px;
+    background-color: var(--lavender);
+    border: 1px solid var(--line);
+}
+
 header img {
     display: block;
     width: 110px;
+    height: auto;
 }
 
 nav ul {
+    display: flex;
+    list-style: none;
     margin-left: 24px;
     font-size: 0.85rem;
+    background-color: #fff;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
 }
 
-nav a:hover {
-    color: var(--secondary-color);
+nav li + li {
+    border-left: 1px solid var(--line);
 }
 
-/* Headings */
+nav a {
+    display: block;
+    padding: 8px 22px;
+    color: var(--accent1-color);
+    text-decoration: none;
+    text-align: center;
+}
+
+nav a:hover,
+nav a:focus-visible {
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+}
+
+/* ---------- Headings ---------- */
 h1,
 h2 {
     font-family: var(--heading-font);
 }
 
 h2 {
-    background-color: var(--primary-color);
-    color: #fff;
+    color: var(--primary-color);
     text-align: center;
-    padding: 14px;
-    margin: 30px 0 16px;
-    border-bottom: 4px solid var(--accent2-color);
+    font-size: 1.6rem;
+    margin-bottom: 14px;
 }
 
 section p {
     padding: 0 12px;
     font-size: 0.85rem;
+    line-height: 1.5;
 }
 
-/* Hero */
+/* ---------- Hero: title + bordered text box over image ---------- */
 .hero {
     position: relative;
     margin-top: 10px;
+    border: 1px solid var(--line);
 }
 
-.hero img {
+.hero > img {
     display: block;
     width: 100%;
-    height: auto;
+    height: 340px;
+    object-fit: cover;
 }
 
 .hero h1 {
     position: absolute;
-    top: 40px;
+    top: 24px;
     left: 0;
     width: 100%;
     padding: 10px;
@@ -91,31 +130,108 @@ section p {
     bottom: 30px;
     left: 20px;
     right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
     padding: 16px;
-    color: #fff;
-    background-color: rgba(26, 50, 99, 0.8);
+    color: var(--accent1-color);
+    background-color: #fff;
+    border: 1px solid var(--line);
 }
 
 .hero article p {
+    flex: 1;
+    padding: 0;
     font-size: 0.9rem;
 }
 
 .hero article img {
-    float: right;
+    order: 2;
+    /* small image sits on the right of the text */
     width: 125px;
-    margin-left: 16px;
+    height: auto;
+    flex-shrink: 0;
 }
 
-/* Footer */
+/* ---------- Shared grey panels (History, Adventure Awaits You) ---------- */
+main > section:not(.hero) {
+    margin-top: 16px;
+    padding: 20px 12px 24px;
+    background-color: var(--panel);
+    border: 1px solid var(--line);
+}
+
+/* ---------- History: text | image | text ---------- */
+.history {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    column-gap: 16px;
+}
+
+.history h2 {
+    grid-column: 1 / -1;
+}
+
+.history img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* ---------- Adventure Awaits You: five captioned images ---------- */
+.adventure {
+    text-align: center;
+}
+
+.adventure .gallery {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.adventure figure {
+    flex: 1;
+    max-width: 100px;
+}
+
+.adventure figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.adventure figcaption {
+    margin-top: 6px;
+    font-size: 0.8rem;
+}
+
+/* ---------- Footer: text centre, social icons right ---------- */
 footer {
-    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 16px;
+    margin-bottom: 10px;
     padding-top: 15px;
-    border-top: 3px solid var(--secondary-color);
+    padding-bottom: 15px;
+    background-color: var(--lavender);
+    border: 1px solid var(--line);
 }
 
 footer p {
+    flex: 1;
+    text-align: center;
     font-size: 0.8rem;
-    margin-bottom: 8px;
+    margin-bottom: 0;
+}
+
+.socialmedia {
+    display: flex;
+    gap: 8px;
 }
 
 .socialmedia a {
@@ -123,7 +239,55 @@ footer p {
 }
 
 .socialmedia img {
+    display: block;
     width: 40px;
     height: 40px;
-    margin-right: 8px;
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 700px) {
+    header {
+        flex-direction: column;
+    }
+
+    nav ul {
+        margin-left: 0;
+    }
+
+    nav a {
+        padding: 8px 12px;
+    }
+
+    .hero h1 {
+        position: static;
+        font-size: 2rem;
+    }
+
+    .hero > img {
+        height: 200px;
+    }
+
+    .hero article {
+        position: static;
+        margin: 12px;
+        flex-direction: column;
+    }
+
+    .history {
+        grid-template-columns: 1fr;
+        row-gap: 12px;
+    }
+
+    .adventure .gallery {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .adventure figure {
+        flex: 0 0 40%;
+    }
+
+    footer {
+        flex-direction: column;
+    }
 }
